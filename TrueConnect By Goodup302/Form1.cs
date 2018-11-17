@@ -23,6 +23,11 @@ namespace TrueConnect_By_Goodup302
         public Form1()
         {
             InitializeComponent();
+
+            Form2 f2 = new Form2();
+            f2.Show();
+
+
             chart1.ChartAreas.Add("Base");
             chart1.ChartAreas[0].AxisX.Minimum = 0;
             chart1.ChartAreas[0].AxisY.Minimum = -1;

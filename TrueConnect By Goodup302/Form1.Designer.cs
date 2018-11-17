@@ -47,6 +47,7 @@
             this.timer1 = new System.Timers.Timer();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.trackBar = new System.Windows.Forms.TrackBar();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TextBoxMaxMs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -223,11 +224,21 @@
             this.trackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trackBar.Scroll += new System.EventHandler(this.trackBar_Scroll);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 516);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1174, 551);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.trackBar);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.progressBar);
@@ -278,5 +289,6 @@
         private System.Timers.Timer timer1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TrackBar trackBar;
+        private System.Windows.Forms.Button button2;
     }
 }
