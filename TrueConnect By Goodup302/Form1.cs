@@ -23,11 +23,7 @@ namespace TrueConnect_By_Goodup302
         public Form1()
         {
             InitializeComponent();
-
-            Form2 f2 = new Form2();
-            f2.Show();
-
-
+            
             chart1.ChartAreas.Add("Base");
             chart1.ChartAreas[0].AxisX.Minimum = 0;
             chart1.ChartAreas[0].AxisY.Minimum = -1;
@@ -128,7 +124,6 @@ namespace TrueConnect_By_Goodup302
                     logPing[i] = -1;
                     error++;
                     messageList = "[" + i + "]    Error  -  " + result.Status;
-                    chart1.Series[2].Points.AddXY(i, 0);
                 }
                 listPing.Items.Add(messageList);
                 progressBar.Value = (int)(i / loopSize * 100);
@@ -154,6 +149,10 @@ namespace TrueConnect_By_Goodup302
                 if (list[i] > -1)
                 {
                     chart1.Series[0].Points.AddXY(i, list[i]);
+                }
+                else
+                {
+                    chart1.Series[2].Points.AddXY(i, 0);
                 }
             }
         }

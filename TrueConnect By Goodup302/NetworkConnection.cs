@@ -13,8 +13,6 @@ namespace TrueConnect_By_Goodup302
         public const int maxTrameSize = 1472;
         public const int maxIcmpSize = 65500;
 
-        private Chart diagram;
-
         public NetworkConnection(string lastName, string firstName)
         {
             
