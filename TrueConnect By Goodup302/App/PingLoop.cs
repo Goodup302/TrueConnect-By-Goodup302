@@ -10,6 +10,10 @@ namespace TrueConnect_By_Goodup302
 {
     class PingLoop
     {
+        public event EventHandler endRunEvent;
+        public event EventHandler loadingUpEvent;
+
+
         public int bufferSize;
         public string addressIp;
         public int timeout;
@@ -28,6 +32,8 @@ namespace TrueConnect_By_Goodup302
         public int resultMaxMs;
 
         public double averageLatency;
+
+        public int progressPercentage;
 
         public PingLoop(string ip, int time)
         {
@@ -52,6 +58,7 @@ namespace TrueConnect_By_Goodup302
         {
             if (queryIsInit)
             {
+                progressPercentage = 0;
                 double additionOfPing = 0;
                 PingReply result;
                 for (int i = 0; i < this.loopSize; i++)
@@ -85,13 +92,30 @@ namespace TrueConnect_By_Goodup302
                         }
                         error++;
                     }
-                    //set the percentage of charging
+                    progressPercentage = (int)(i / this.loopSize * 100);
+                    loadingUp(EventArgs.Empty);
                 }
                 averageLatency = (additionOfPing / success);
+                endRun(EventArgs.Empty);
             }
             else
             {
                 MessageBox.Show("(Class) "+this.GetType().Name+ ": defineQuery() isn't set.");
+            }
+        }
+
+        protected virtual void endRun(EventArgs e)
+        {
+            if (endRunEvent != null)
+            {
+                endRunEvent(this, e);
+            }
+        }
+        protected virtual void loadingUp(EventArgs e)
+        {
+            if (loadingUpEvent != null)
+            {
+                loadingUpEvent(this, e);
             }
         }
     }
