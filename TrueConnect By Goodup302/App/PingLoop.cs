@@ -23,7 +23,7 @@ namespace TrueConnect_By_Goodup302
         public int[] logPing;
         public int[] logPingSuccess;
         public IPStatus[] logPingError;
-        public int loopSize;
+        public double loopSize;
 
         public int error;
         public int success;
@@ -92,7 +92,7 @@ namespace TrueConnect_By_Goodup302
                         }
                         error++;
                     }
-                    progressPercentage = (int)(i / this.loopSize * 100);
+                    progressPercentage = (int)((i + 1) / loopSize * 100);
                     loadingUp(EventArgs.Empty);
                 }
                 averageLatency = (additionOfPing / success);
@@ -103,6 +103,7 @@ namespace TrueConnect_By_Goodup302
                 MessageBox.Show("(Class) "+this.GetType().Name+ ": defineQuery() isn't set.");
             }
         }
+
 
         protected virtual void endRun(EventArgs e)
         {

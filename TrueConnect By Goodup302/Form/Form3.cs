@@ -15,8 +15,9 @@ namespace TrueConnect_By_Goodup302
     {
 
         private ChartGestion chartGestion;
-        public delegate void showDelegate(object valeur);
-        public delegate void updateProgressBarDelegate(object valeur);
+        public delegate void showDelegate(object value);
+        public delegate void updateProgressBarDelegate(int value);
+        public Thread thread;
 
         public Form3()
         {
@@ -27,19 +28,25 @@ namespace TrueConnect_By_Goodup302
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            PingLoop ping = new PingLoop(inputAdresse.Text, int.Parse(inputTime.Text));
-            int.Parse(inputLatency.Text);
-            ping.defineQuery(int.Parse(inputBuffer.Text), int.Parse(inputLatency.Text));
-            ping.endRunEvent += onPingLoop_endRun;
-            ping.loadingUpEvent += onPingLoop_loadingUp;
+            if (buttonStart.Text != "Stop")
+            {
+                PingLoop ping = new PingLoop(inputAdresse.Text, int.Parse(inputTime.Text));
+                int.Parse(inputLatency.Text);
+                ping.defineQuery(int.Parse(inputBuffer.Text), int.Parse(inputLatency.Text));
+                ping.endRunEvent += onPingLoop_endRun;
+                ping.loadingUpEvent += onPingLoop_loadingUp;
 
-            progressBar.Visible = true;
-            progressBar.Value = 10;
-            buttonStart.Text = "Stop";
-            buttonStart.Enabled = false;
+                progressBar.Visible = true;
+                progressBar.Value = 0;
+                buttonStart.Text = "Stop";
 
-            Thread thread = new Thread(new ThreadStart(ping.run));
-            thread.Start();
+                thread = new Thread(new ThreadStart(ping.run));
+                thread.Start();
+            }
+            else
+            {
+                buttonStart.Text = "Start";
+            }
         }
 
         private void onPingLoop_endRun(object sender, EventArgs e)
@@ -48,7 +55,6 @@ namespace TrueConnect_By_Goodup302
         }
         private void show(object sender)
         {
-
             PingLoop ping = (PingLoop)sender;
             progressBar.Visible = false;
             chartGestion.initChart(0, ping.logPing);
@@ -58,13 +64,12 @@ namespace TrueConnect_By_Goodup302
 
         private void onPingLoop_loadingUp(object sender, EventArgs e)
         {
-            Invoke((showDelegate)updateProgressBar, sender);
-        }
-
-        private void updateProgressBar(object sender)
-        {
             PingLoop ping = (PingLoop)sender;
-            progressBar.Value = ping.progressPercentage;
+            Invoke((updateProgressBarDelegate)updateProgressBar, ping.progressPercentage);
+        }
+        private void updateProgressBar(int value)
+        {
+            progressBar.Value = value;
         }
 
         private void closeImage_Click(object sender, EventArgs e)

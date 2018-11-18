@@ -23,9 +23,9 @@ namespace TrueConnect_By_Goodup302
             Ping pingSender = new Ping();
             PingOptions options = new PingOptions();
             PingReply reply = null;
+            options.DontFragment = false;
             try
             {
-                options.DontFragment = false;
                 reply = pingSender.Send(ip, timeout, new byte[bufferSize], options);
             }
             catch (ArgumentException e)
