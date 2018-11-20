@@ -61,6 +61,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.listBoxSuccess = new System.Windows.Forms.ListBox();
+            this.listBoxErrors = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeImage)).BeginInit();
             this.panel2.SuspendLayout();
@@ -68,6 +70,7 @@
             this.panel3.SuspendLayout();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse
@@ -107,12 +110,12 @@
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.Depth = 0;
-            this.titleLabel.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Font = new System.Drawing.Font("Roboto", 11F);
             this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.titleLabel.Location = new System.Drawing.Point(12, 12);
             this.titleLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(247, 24);
+            this.titleLabel.Size = new System.Drawing.Size(195, 19);
             this.titleLabel.TabIndex = 1;
             this.titleLabel.Text = "TrueConnect By Goodup302";
             // 
@@ -386,22 +389,24 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(592, 244);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Graphic";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.listBoxErrors);
+            this.tabPage2.Controls.Add(this.listBoxSuccess);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(592, 244);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Statistics";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // materialTabSelector1
             // 
-            this.materialTabSelector1.BaseTabControl = null;
+            this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
             this.materialTabSelector1.Depth = 0;
             this.materialTabSelector1.Dock = System.Windows.Forms.DockStyle.Top;
             this.materialTabSelector1.Location = new System.Drawing.Point(200, 45);
@@ -410,6 +415,22 @@
             this.materialTabSelector1.Size = new System.Drawing.Size(600, 38);
             this.materialTabSelector1.TabIndex = 4;
             this.materialTabSelector1.Text = "materialTabSelector1";
+            // 
+            // listBoxSuccess
+            // 
+            this.listBoxSuccess.FormattingEnabled = true;
+            this.listBoxSuccess.Location = new System.Drawing.Point(2, 3);
+            this.listBoxSuccess.Name = "listBoxSuccess";
+            this.listBoxSuccess.Size = new System.Drawing.Size(312, 238);
+            this.listBoxSuccess.TabIndex = 0;
+            // 
+            // listBoxErrors
+            // 
+            this.listBoxErrors.FormattingEnabled = true;
+            this.listBoxErrors.Location = new System.Drawing.Point(320, 3);
+            this.listBoxErrors.Name = "listBoxErrors";
+            this.listBoxErrors.Size = new System.Drawing.Size(269, 238);
+            this.listBoxErrors.TabIndex = 1;
             // 
             // Form3
             // 
@@ -436,6 +457,7 @@
             this.panel3.PerformLayout();
             this.materialTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -467,5 +489,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
         private MaterialSkin.Controls.MaterialFlatButton buttonForm1;
+        private System.Windows.Forms.ListBox listBoxErrors;
+        private System.Windows.Forms.ListBox listBoxSuccess;
     }
 }
