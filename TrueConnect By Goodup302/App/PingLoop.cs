@@ -35,6 +35,8 @@ namespace TrueConnect_By_Goodup302
 
         public int progressPercentage;
 
+        public bool breaking;
+
         public PingLoop(string ip, int time)
         {
             this.queryIsInit = false;
@@ -43,6 +45,7 @@ namespace TrueConnect_By_Goodup302
             this.logPing = new int[time];
             this.logPingSuccess = new int[time];
             this.logPingError = new IPStatus[time];
+            this.breaking = false;
         }
 
         public void defineQuery(int buffer, int timeout)
@@ -53,16 +56,25 @@ namespace TrueConnect_By_Goodup302
             this.timeout = timeout;
         }
 
+        public void stop()
+        {
+            breaking = true;
+        }
 
         public void run()
         {
             if (queryIsInit)
             {
+                this.breaking = false;
                 progressPercentage = 0;
                 double additionOfPing = 0;
                 PingReply result;
                 for (int i = 0; i < this.loopSize; i++)
                 {
+                    if (breaking)
+                    {
+                        break;
+                    }
                     result = NetworkConnection.PingHost(this.addressIp, this.bufferSize, this.timeout);
                     if (result != null && result.Status == IPStatus.Success && result.RoundtripTime <= timeout)
                     {
